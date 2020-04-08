@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# Lint as: python3
 """Configuration parameters for server output plugins."""
 
 from __future__ import absolute_import
@@ -64,3 +63,8 @@ config_lib.DEFINE_string(
 
 config_lib.DEFINE_string("Splunk.index", None,
                          "The index assigned to all submitted events.")
+
+# GELFOutputPlugin
+config_lib.DEFINE_string(
+    "GELF.url", None, "URL of the GELF input, e.g. "
+    "'https://logging-server.example.com:12201'")

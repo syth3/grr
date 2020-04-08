@@ -83,3 +83,6 @@ message SplunkOutputPluginArgs {
   optional string index = 2
       [(sem_type) = { description: "The Splunk Index to assign to events." }];
 }
+
+message GELFOutputPluginArgs {
+}
