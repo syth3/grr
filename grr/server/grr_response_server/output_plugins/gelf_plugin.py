@@ -74,8 +74,6 @@ class GELFOutputPlugin(output_plugin.OutputPlugin):
     for payload_id in range(len(payloads)):
       payload_name = "Payload " + str(payload_id+1)
       payload_data[payload_name] = payloads[payload_id]
-    with open('/home/jake/Documents/ms-capstone/GRR/grr-output.json', 'w', encoding='utf-8') as f:
-      json.dump(payload_data, f, ensure_ascii=False, indent=4)
 
     self._SendPayloads(payloads)
 
@@ -119,10 +117,15 @@ class GELFOutputPlugin(output_plugin.OutputPlugin):
     payload = {
       "version": "1.1",
       "host": host,
-      "short_message": str(host) + " " + str(flow.name) + " From GRR",
-      "full_message": _ToDict(message.payload),
+      "short_message": "GRR: " + str(host) + " -> " + str(flow.name),
+      "full_message": "GRR flow " + str(flow.name) + " was run on host " + str(host),
       "timestamp": time,
+      "_flow_name": flow.name
     }
+
+    message_as_dict = _ToDict(message.payload)
+    for key in message_as_dict.keys():
+      payload['_' + str(key)] = message_as_dict[key]
 
     return payload
 
