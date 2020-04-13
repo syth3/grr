@@ -51,7 +51,7 @@ class GELFOutputPlugin(output_plugin.OutputPlugin):
 
   def __init__(self, *args, **kwargs):
     """See base class."""
-    super(GELFOutputPlugin, self).__init__(*args, **kwargs)
+    super().__init__(*args, **kwargs)
     url = config.CONFIG["GELF.url"]
 
     if not url:
