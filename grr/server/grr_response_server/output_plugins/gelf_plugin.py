@@ -9,8 +9,6 @@ from __future__ import division
 
 from __future__ import unicode_literals
 
-from urllib import parse as urlparse
-
 import requests
 
 
@@ -58,7 +56,7 @@ class GELFOutputPlugin(output_plugin.OutputPlugin):
       raise GELFConfigurationError(
           "Cannot start GELFOutputPlugin, because GELF.url is not "
           "configured. Set it to the URL of your GELF input, "
-          "e.g. 'https://logging-server.example.com:12201'.")
+          "e.g. 'https://logging-server.example.com:12201/gelf'.")
     self._url = url
 
   def ProcessResponses(self, state, responses):
