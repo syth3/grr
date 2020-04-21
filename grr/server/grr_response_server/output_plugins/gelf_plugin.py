@@ -70,10 +70,6 @@ class GELFOutputPlugin(output_plugin.OutputPlugin):
     flow = self._GetFlowMetadata(client_id, flow_id)
 
     payloads = [self._MakePayload(response, client, flow) for response in responses]
-    payload_data = {}
-    for payload_id in range(len(payloads)):
-      payload_name = "Payload " + str(payload_id+1)
-      payload_data[payload_name] = payloads[payload_id]
 
     self._SendPayloads(payloads)
 
